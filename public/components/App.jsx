@@ -2,6 +2,7 @@ import React from 'react';
 import {render} from 'react-dom';
 import { Router, Route, Link, IndexRoute } from 'react-router';
 import createBrowserHistory from 'history/lib/createBrowserHistory';
+import GraphsContainer from './Graphs/GraphsContainer.jsx';
 // import configureStore from './../store/store.js';
 // import DevTools from './Devtools/Devtools.jsx';
 
@@ -24,8 +25,11 @@ let history = createBrowserHistory();
 
 render(
   (
-      <Router history={history} >
-        <Route path="/" component={App}>
-        </Route>
-      </Router>
-    ),document.getElementById('app'));
+  <Provider store={store}>
+    <Router history={history} >
+      <Route path="/" component={App}>
+        <IndexRoute component={GraphsContainer}/>
+      </Route>
+    </Router>
+  </Provider>
+  ),document.getElementById('app'));

@@ -14,5 +14,9 @@
   ],
   "homepage": "https://github.com/kennetpostigo/Instafai",
   "moduleType": [],
-  "private": true
+  "private": true,
+  "dependencies": {
+    "bootstrap-sass": "~3.3.5",
+    "Ionicons": "ionicons#~2.0.1"
+  }
 }

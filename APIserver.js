@@ -45,7 +45,7 @@ function getCredentials(imgUrl) {
 			return res.json();
 		})
 		.then(function (responseBody) {
-			console.log(JSON.stringify(responseBody.results[0].result.tag.classes));
+			// console.log(JSON.stringify(responseBody.results[0].result.tag.classes));
 	    return responseBody.results[0].result.tag.classes;
 		})
 	})
@@ -62,6 +62,9 @@ app.get('/imgs/:tag', function(req, res){
 	});
 
 	ig.tag_media_recent('stela',function(err, result, remaining, limit) {
+		var Instagram = result.map(function (item) {
+			return item.images.standard_resolution.url;
+		});
 		var tags = result.map(function (item) {
 			return getCredentials(item.images.standard_resolution.url);
 		});
@@ -78,7 +81,8 @@ app.get('/imgs/:tag', function(req, res){
 			}, {});
 			res.json({
 				err: err,
-				result: result
+				result: result,
+				imgUrls: Instagram
 			});
 		});
 	});

@@ -34,7 +34,8 @@
     "react-router": "1.0.3",
     "react-slick": "0.9.3",
     "redux": "3.0.5",
-    "redux-thunk": "1.0.2"
+    "redux-thunk": "1.0.2",
+    "victory": "0.2.0"
   },
   "devDependencies": {
     "babel-cli": "6.3.17",
