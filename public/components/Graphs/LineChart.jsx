@@ -1,30 +1,42 @@
 import React from 'react';
-import {VictoryChart, VictoryLine} from 'victory';
+import {VictoryChart, VictoryAxis, VictoryBar} from 'victory';
 
 function LineChart (props) {
   return (
-  <VictoryChart>
-     <VictoryLine
-      data={[
-        {x: 1, y: 0},
-        {x: 3, y: 2},
-        {x: 5, y: 4},
-        {x: 7, y: 6},
-        {x: 9, y: 8},
-        {x: 11, y: 10}
-      ]}
-   />
-    <VictoryLine
-      data={[
-        {x: 0, y: 1},
-        {x: 2, y: 3},
-        {x: 4, y: 5},
-        {x: 6, y: 7},
-        {x: 8, y: 9},
-        {x: 10, y: 11}
-      ]}
-   />
-  </VictoryChart>
+    <VictoryChart
+      height={500}
+      padding={{
+        top: 75,
+        bottom: 40,
+        left: 40,
+        right: 40
+      }}
+      domainPadding={{x: 20}}>
+      <VictoryAxis
+        label="X AXIS"
+        orientation="top"/>
+      <VictoryAxis dependentAxis
+        tickValues={[0, 1.5, 3, 4.5]}
+        style={{
+          grid: {
+            stroke: "grey",
+            strokeWidth: 1
+          },
+          axis: {stroke: "transparent"},
+          ticks: {stroke: "transparent"}
+        }}/>
+      <VictoryBar
+        style={{data:
+          {width: 15, fill: "orange"}
+        }}
+        data={[
+          {x: 1, y: props.lineData[4]},
+          {x: 2, y: props.lineData[3]},
+          {x: 3, y: props.lineData[2]},
+          {x: 4, y: props.lineData[1]},
+          {x: 5, y: props.lineData[0]},
+        ]}/>
+    </VictoryChart>
   );
 }
 

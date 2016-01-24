@@ -62,6 +62,7 @@ app.get('/imgs/:tag', function(req, res){
 	});
 
 	ig.tag_media_recent('stela',function(err, result, remaining, limit) {
+
 		var Instagram = result.map(function (item) {
 			return item.images.standard_resolution.url;
 		});
@@ -85,6 +86,14 @@ app.get('/imgs/:tag', function(req, res){
 				imgUrls: Instagram
 			});
 		});
+
+		// fetch('./insta.json')
+		// .then(function (res) {
+		// 	return res.json();
+		// })
+		// .then(function (responseBody) {
+		// 	return responseBody.json();
+		// })
 	});
 
 });

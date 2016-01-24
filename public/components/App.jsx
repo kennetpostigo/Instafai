@@ -20,7 +20,7 @@ function App (props, reactElementInstance) {
       );
     };
 
-  return instance;
+  return instance; 
 }
 
 let history = createBrowserHistory();

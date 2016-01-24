@@ -20,7 +20,21 @@ export function pollInformation (results, img) {
 
 export function fetchInformation () {
   return function (dispatch) {
-    return fetch('http://localhost:3000/imgs/gopro')
+     return fetch('http://localhost:3000/imgs/stela')
+      .then(function (res) {
+        return res.json()
+      })
+      .then(function (responseBody) {
+        var result = I.fromJS(responseBody.result);
+        var imgUrls = I.fromJS(responseBody.imgUrls);
+        return dispatch(receiveInformation(result, imgUrls));
+      });
+  }
+}
+
+export function fetchPollInformation () {
+  return function (dispatch) {
+    return fetch('http://localhost:3000/imgs/stela')
       .then(function (res) {
         return res.json()
       })
@@ -30,20 +44,6 @@ export function fetchInformation () {
         var imgUrls = I.fromJS(responseBody.imgUrls);
         console.log('imgUrls async: ', imgUrls.toJS())
         return dispatch(receiveInformation(result, imgUrls));
-      });
-  }
-}
-
-export function fetchPollInformation () {
-  return function (dispatch) {
-    fetch('http://localhost:3000/imgs/gopro')
-      .then(function (res) {
-        return res.json()
-      })
-      .then(function (responseBody) {
-        var responseBody = I.fromJS(responseBody);
-        console.log('async: ', responseBody);
-        return dispatch(pollInformation(responseBody));
       });
   }
 }
