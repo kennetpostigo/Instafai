@@ -1,4 +1,4 @@
-# Instafai
+# Instafai Hack for SwampHacks 2016 🐊
 <p align="center">
   <img align="center" src="assets/images/logo.svg" height="50"/>
 </p>
